@@ -6,7 +6,7 @@ public class VentaContado extends Venta {
 		super();
 	}
 
-	public float calcularTotal() {
+	public float calcularGanancia() {
         return Entrada.getPrecio() * entradas.size();
     }
 }

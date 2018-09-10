@@ -10,7 +10,7 @@ public class Entrada {
     private String numSala;
     private LocalDate fecha;
     private String nombreEstablecimiento;
-    
+
 	public Entrada(Funcion funcion, String asiento) {
 		this.funcion = funcion;
 		nombrePeli = funcion.getLaPelicula().getNombre();
@@ -51,5 +51,5 @@ public class Entrada {
 	public String getNombreEstablecimiento() {
 		return nombreEstablecimiento;
 	}
-	
+
 }

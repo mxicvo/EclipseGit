@@ -36,5 +36,5 @@ public class Sala extends Establecimiento {
 	public void setCantLugares(int cantLugares) {
 		this.cantLugares = cantLugares;
 	}
-	
+
 }

@@ -2,24 +2,14 @@ package SistemaPeliculas;
 import java.time.LocalDate;
 import java.util.*;
 
-
-/**
- * 
- */
 public class SistGestionVentaEntradas {
-
-  
 
     private Vector<Venta> Ventas;
     private Vector<Establecimiento> Establecimientos;
     private Vector<Usuario> Usuarios;
     private Vector<Pelicula> Peliculas;
     private Vector<Funcion> Funciones;
-    
-    
-    /**
-     * Default constructor
-     */
+
     public SistGestionVentaEntradas() {
     	Ventas=new Vector<Venta>();
     	Establecimientos=new Vector<Establecimiento>();
@@ -42,7 +32,7 @@ public class SistGestionVentaEntradas {
 		{
 			if (Establecimientos.elementAt(i).sosElEstablecimiento(id))
 				return Establecimientos.elementAt(i);
-				
+
 		}
 		return null;
  	}
@@ -56,7 +46,7 @@ public class SistGestionVentaEntradas {
 			e.setDomicilio(domicilio);
 		}
     }
-   
+
     public void eliminarEstablecimiento(int id) {
         Establecimientos.remove(id);
     }
@@ -71,17 +61,17 @@ public class SistGestionVentaEntradas {
 	}
 
 
-    private Pelicula buscarPelicula(int id) 
+    private Pelicula buscarPelicula(int id)
     {
 		for (int i=0; i<Peliculas.size();i++)
 	{
 		if (Peliculas.elementAt(i).sosLaPelicula(id))
 			return Peliculas.elementAt(i);
-			
+
 	}
 	return null;
 	}
-    
+
 
     public void modificarPelicula(int id,String nombre,String director,String genero,String duracion,String idioma,String subtitulos,float calificacion,String observaciones) {
 		Pelicula p = buscarPelicula(id);
@@ -94,12 +84,12 @@ public class SistGestionVentaEntradas {
 			p.setIdioma(idioma);
 			p.setSubtitulos(subtitulos);
 			p.setCalificacion(calificacion);
-			p.setObservaciones(observaciones);			
+			p.setObservaciones(observaciones);
 		}
     }
 
     public void eliminarPelicula(int id) {
-     	Peliculas.remove(id);    	
+     	Peliculas.remove(id);
     }
 
     public void crearFuncion(int id,LocalDate fecha,Sala laSala,Pelicula laPelicula) {
@@ -116,21 +106,27 @@ public class SistGestionVentaEntradas {
 		{
 			if (Funciones.elementAt(i).sosLaFuncion(id))
 				return Funciones.elementAt(i);
-				
+
 		}
 		return null;
  	}
 
-    public void modificarFuncion(int id,LocalDate fecha,Sala laSala,Pelicula laPelicula,Entrada entradas) {
-    	 
+    public void modificarFuncion(int id,LocalDate fecha,Sala laSala,Pelicula laPelicula,int lugaresDisp) {
+    	 Funcion f = buscarFuncion(id);
+    	 if (f != null) {
+    		 f.setFecha(fecha);
+    		 f.setLaSala(laSala);
+    		 f.setLaPelicula(laPelicula);
+    		 f.setLugaresDisponibles(lugaresDisp);
+    	 }
     }
 
      public void eliminarFuncion(int id) {
-       Funciones.remove(id);    	 
+       Funciones.remove(id);
     }
 
     public void crearUsuario(int id, int dni, String email, String password, String nombre, String domicilio, LocalDate fechaNac,
-			String tipoDeUsuario) 
+			String tipoDeUsuario)
     {
     	Usuario u = buscarUsuario(id);
 		if (u==null)
@@ -139,14 +135,14 @@ public class SistGestionVentaEntradas {
 			Usuarios.add(u);
 		}
 	}
-    
+
 
     private Usuario buscarUsuario(int id) 	{
  		for (int i=0; i<Usuarios.size();i++)
 		{
 			if (Usuarios.elementAt(i).sosElUsuario(id))
 				return Usuarios.elementAt(i);
-				
+
 		}
 		return null;
  	}
@@ -175,25 +171,25 @@ public class SistGestionVentaEntradas {
 		Ventas.add(vta);
 		return vta.getNumero();
 	}
-	
+
 	public int iniciarVentaCredito(String tipoDeTarjeta, int numeroTarjeta, String fechaVtoTarjeta, int codSeguridadTarjeta)
 	{
 		VentaCredito vta = new VentaCredito(tipoDeTarjeta,numeroTarjeta,fechaVtoTarjeta,codSeguridadTarjeta);
 		Ventas.add(vta);
 		return vta.getNumero();
 	}
-	
+
 	   private Venta buscarVenta(int nro) 	{
 	 		for (int i=0; i<Ventas.size();i++)
 			{
 				if (Ventas.elementAt(i).sosLaVenta(nro))
 					return Ventas.elementAt(i);
-					
+
 			}
 			return null;
 	 	}
-	
-		
+
+
     public float cierreVenta(int nro) {
 		Venta vta = buscarVenta(nro);
 		return vta.calcularTotal();
@@ -202,15 +198,15 @@ public class SistGestionVentaEntradas {
     public void imprimirVenta(int nro) {
        Venta vta = buscarVenta(nro);
        if(vta!=null) {
-    	   System.out.println("N°: " + vta.getNumero());
-    	   System.out.println("Fecha: " + vta.getFecha());   	   
+    	   System.out.println("Nï¿½: " + vta.getNumero());
+    	   System.out.println("Fecha: " + vta.getFecha());
        }
     }
 
-    public void cambiarPrecioEntrada(int id,float nuevoPrecio) {
-        
+    public void cambiarPrecioEntrada(float nuevoPrecio) {
+        Entrada.setPrecio(nuevoPrecio);
     }
-    
+
 	public void cambiarComisionVenta(float num){
 		VentaCredito.setComision(num/100);
 	}

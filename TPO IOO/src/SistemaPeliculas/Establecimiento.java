@@ -10,7 +10,7 @@ public class Establecimiento {
     private int capacidadTotal;
     private int cantSalas;
     private Vector<Sala> salas;
-    
+
 	public Establecimiento(int id, String nombreE, int cuit, String domicilio, int capacidadTotal, int cantSalas) {
 		super();
 		this.id = id;
@@ -69,8 +69,8 @@ public class Establecimiento {
 	public Vector<Sala> getSalas() {
 		return salas;
 	}
-	
-	public boolean sosElEstablecimiento(int id) 
+
+	public boolean sosElEstablecimiento(int id)
 	{
 		return this.id == id;
 	}

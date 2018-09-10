@@ -1,13 +1,13 @@
 package SistemaPeliculas;
 
 public class VentaCredito extends Venta {
-	
+
     private String tipoDeTarjeta;
     private int numeroTarjeta;
     private String fechaVtoTarjeta;
     private int codSeguridadTarjeta;
     private static float comision;
-    
+
     public VentaCredito(String tipoDeTarjeta, int numeroTarjeta, String fechaVtoTarjeta, int codSeguridadTarjeta) {
 		super();
 		this.tipoDeTarjeta = tipoDeTarjeta;
@@ -16,7 +16,7 @@ public class VentaCredito extends Venta {
 		this.codSeguridadTarjeta = codSeguridadTarjeta;
 	}
 
-	public float calcularTotal() {
+	public float calcularGanancia() {
         return (Entrada.getPrecio() * entradas.size()) * (1 - comision);
     }
 

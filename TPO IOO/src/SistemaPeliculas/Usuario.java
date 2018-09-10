@@ -12,7 +12,7 @@ public class Usuario{
     private String domicilio;
     private LocalDate fechaNac;
     private String tipoDeUsuario;
-    
+
 	public Usuario(int id, int dni, String email, String password, String nombre, String domicilio, LocalDate fechaNac,
 			String tipoDeUsuario) {
 		super();
@@ -89,10 +89,10 @@ public class Usuario{
 	public void setTipoDeUsuario(String tipoDeUsuario) {
 		this.tipoDeUsuario = tipoDeUsuario;
 	}
-	
-	public boolean sosElUsuario(int id) 
+
+	public boolean sosElUsuario(int id)
 	{
 		return this.id == id;
 	}
-	
+
 }

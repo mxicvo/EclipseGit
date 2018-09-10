@@ -11,7 +11,7 @@ public class Pelicula {
     private String subtitulos;
     private float calificacion;
     private String observaciones;
-    
+
 	public Pelicula(int id, String nombre, String director, String genero, String duracion, String idioma,
 			String subtitulos, float calificacion, String observaciones) {
 		this.id = id;
@@ -96,11 +96,11 @@ public class Pelicula {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	
-	public boolean sosLaPelicula(int id) 
+
+	public boolean sosLaPelicula(int id)
 	{
 		return this.id == id;
 	}
-	
-	
+
+
 }
